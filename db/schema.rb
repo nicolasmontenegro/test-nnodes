@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_09_014439) do
+ActiveRecord::Schema.define(version: 2018_11_09_030002) do
+
+  create_table "fights", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "user_won?"
+    t.integer "superhero_id"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fights_on_user_id"
+  end
 
 # Could not dump table "sqlite_stat1" because of following StandardError
 #   Unknown type '' for column 'tbl'

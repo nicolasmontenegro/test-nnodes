@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @fight.user
+%p
+  %b User won:
+  = @fight.user_won
+%p
+  %b Superhero:
+  = @fight.superhero_id
+%p
+  %b Ended at:
+  = @fight.ended_at
+
+= link_to 'Edit', edit_fight_path(@fight)
+\|
+= link_to 'Back', fights_path

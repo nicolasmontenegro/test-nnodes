@@ -1,0 +1,22 @@
+= form_for @fight do |f|
+  - if @fight.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@fight.errors.count, "error")} prohibited this fight from being saved:"
+      %ul
+        - @fight.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :user_won
+    = f.check_box :user_won
+  .field
+    = f.label :superhero_id
+    = f.number_field :superhero_id
+  .field
+    = f.label :ended_at
+    = f.datetime_select :ended_at
+  .actions
+    = f.submit 'Save'
