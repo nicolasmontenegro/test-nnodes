@@ -11,32 +11,39 @@
 
 
     %header
-      .collapse.bg-dark#navbarHeader
-        .container
-          .row
-            .col-sm-8.col-md-7.py-4
-              %h4.text-white About
-              %p.text-muted
-                Add some information about the album below, the author, or any other background context. 
-            .col-sm-4.offset-md-1.py-4
-              %h4.text-white Acciones
-              %ul.list-unstyled
-                - if user_signed_in?
-                  %li= link_to "Cerrar sesión", destroy_user_session_path, :class => "text-white", :method => :delete 
+      - if user_signed_in?
+        .collapse.bg-dark#navbarHeader
+          .container
+            .row
+              .col-sm-8.col-md-7.py-4
+                %h4.text-white About
+                %p.text-muted
+                  Add some information about the album below, the author, or any other background context. 
+              .col-sm-4.offset-md-1.py-4
+                %h4.text-white= t("actions.title")
+                %ul.list-unstyled
+                  %li= link_to t("actions.log_out"), destroy_user_session_path, :class => "text-white", :method => :delete 
+                  %li= link_to t("users.registrations.edit.title"), edit_user_registration_path, :class => "text-white"
+
 
       .navbar.navbar-dark.bg-dark.shadow-sm
         .container.d-flex.justify-content-between
           = link_to index_path, :class => "a navbar-brand d-flex align-items-center" do
             /= '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>'.html_safe
             SuperTournament
-          %button.navbar-toggler{:type => "button", :data => {:toggle => "collapse", :target => "#navbarHeader"}, :aria => {:controls => "navbarHeader", :expanded => "false", :label => "Toggle navigation"}}
-            %span.navbar-toggler-icon
+          - if user_signed_in?
+            %button.navbar-toggler{:type => "button", :data => {:toggle => "collapse", :target => "#navbarHeader"}, :aria => {:controls => "navbarHeader", :expanded => "false", :label => "Toggle navigation"}}
+              %span.navbar-toggler-icon
 
     .container
       - if alert
         .alert.alert-danger.alert-dismissible.fade.show{:role => "alert"}
           = alert
+          %button.close{:type => "button", :data => {:dismiss => "alert"}, :aria => {:label => t("close")}}
+            %span{:aria => {:hidden => "true"}} &times;
       - if notice
         .alert.alert-primary.alert-dismissible.fade.show{:role => "alert"}
           = notice
+          %button.close{:type => "button", :data => {:dismiss => "alert"}, :aria => {:label => t("close")}}
+            %span{:aria => {:hidden => "true"}} &times;
       = yield

@@ -1,0 +1,19 @@
+es:
+  actions:
+    title: "Acciones"
+    log_out: "Cerrar sesión"
+  users:
+    registrations:
+      edit: 
+        title: "Modificar mi perfil"
+        update: "Actualizar"
+      new:
+        sign_up: "Registrarse"
+    sessions:
+      new:
+        sign_in: "Iniciar sesión"
+
+  activerecord:
+    attributes:
+      user:
+        username: "Nombre de usuario"

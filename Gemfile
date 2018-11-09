@@ -65,6 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # https://github.com/plataformatec/devise
 gem 'devise'
+gem 'devise-i18n'
 
 # https://github.com/indirect/haml-rails
 gem "haml-rails"
